@@ -1,5 +1,5 @@
 """
-URL configuration for crud project.
+URL configuration for EmployeeRecordMgmt project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -14,11 +14,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
 from django.urls import path
-from . import views
+from employee.views import *
+
 
 urlpatterns = [
-    path('', views.home, name='home'), 
-    path('add/', views.add, name='add'), 
-
+    path('admin/', admin.site.urls),
+    # to create own Home Page
+    path('',index,name='index.html'),
+    path('home',index,name='index.html'),
+    path('registration', registration, name='registration'),
+    path('emp_login', emp_login, name='emp_login'),
+    path('emp_home', emp_home, name='emp_home'),
 ]

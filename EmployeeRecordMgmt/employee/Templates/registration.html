@@ -1,0 +1,82 @@
+{% comment %} SIGN UP PAGE FOR EMPLOYEE
+ONLY LOGIN FOR ADMIN {% endcomment %}
+
+
+{% include 'header.html' %}
+
+<script>
+    function checkpass(){
+        if (documment.signup.pwd.value!=documment.signup.cpwd.value)
+        {
+            alert('Password and Repeat Password does not match');
+            document.signup.cpwd.focus();
+            return false; 
+        }
+        return true;
+    }
+</script>
+
+<div class="card shadow m-5">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange" >Create account</h5>
+        <div class="container-fluid">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Enter first name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Enter last name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Employee Code</label>
+                            <input type="text" name="empcode" class="form-control" placeholder="Enter employee code" pattern="[0-9]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Email ID</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter email ID" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="pwd" class="form-control" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" name="cpwd" class="form-control" placeholder="Re-Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        </div>
+                    </div>
+                </div>
+                 
+                <br>
+                <input type="submit" value="Submit" class="btn btn-primary m-2 px-3">
+            </form>
+        </div>
+    </div>
+</div>
+{% if error == "no" %}
+<script>
+    alert("Signup Successful");
+    window.location=('{% url 'emp_login'  %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong,Try Again....");
+</script>
+{% endif %}
+ 

@@ -1,0 +1,22 @@
+<!-- custom_form.html -->
+{% load crispy_forms_tags %}
+
+<div class="custom-form">
+    {{ form|crispy }}
+</div>
+
+from crispy_forms.layout import Layout
+from crispy_forms.helper import FormHelper
+
+class YourForm(forms.Form):
+    # Your form fields
+
+    # Optionally, set a custom template for this form
+    crispy_template = 'your_app_name/custom_form.html'
+
+    def __init__(self, *args, **kwargs):
+        super(YourForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            # Your layout here
+        )

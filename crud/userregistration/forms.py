@@ -1,7 +1,10 @@
 from django import forms
 from .models import User
-class UserRegFrom(forms.ModelForm):
+class UserRegForm(forms.ModelForm):
     class Meta:
         model= User
         fields= {'name','password','dob'}
-        widgets= forms.DateInput( )
+        widgets= {
+            'password': forms.PasswordInput(render_value=True),
+            'dob': forms.DateInput()
+        }

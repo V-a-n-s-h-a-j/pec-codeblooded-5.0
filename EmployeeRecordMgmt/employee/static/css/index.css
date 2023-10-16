@@ -1,0 +1,9 @@
+body{
+    margin: 0;
+    /* display: flex; */
+    min-height: 100vh;
+    /* justify-content: center;
+    align-items: center; */
+    background: url('static/images/milad-fakurian-nY14Fs8pxT8-unsplash.jpg') no-repeat center center/ cover;
+
+}
